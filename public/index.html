@@ -167,7 +167,6 @@
             dy = -2;
             paddleX = (canvas.width - paddleWidth) / 2;
           }
-
         }
       }
 
@@ -179,8 +178,10 @@
 
       x += dx;
       y += dy;
+      requestAnimationFrame(draw);
     }
-    setInterval(draw, 10);
+
+    draw();
   </script>
 </body>
 </html>
