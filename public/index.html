@@ -13,7 +13,31 @@
   <canvas id="myCanvas" width="480" height="320"></canvas>
 
   <script>
+    var canvas = document.getElementById('myCanvas');
+    var ctx = canvas.getContext('2d');
 
+    ctx.beginPath();  // drawing start
+    ctx.rect(20, 40, 50, 50); // draw rectangle (pointX, pointY, width, height)
+    ctx.fillStyle = '#FF0000';  // setting the red color
+    ctx.fill(); // do fill the color into the rectangle
+    ctx.closePath();  // drawing end
+
+    ctx.beginPath();
+    /*
+     * arc(x, y, r, sAngle, eAngle, counterclockwise)
+     * x: The x-coordinate of the center of the circle
+     * y: The y-coordinate of the center of the circle
+     * r: The radius of the circle
+     * sAngle: The starting angle, in radians (0 is at the 3 o'clock position of the arc's circle)
+     * eAngle: The ending angle, in radians
+     * counterclockwise: Optional. Specifies whether the drawing should be counterclockwise or clockwise. False is default, and indicates clockwise, while true indicates counter-clockwise.
+     */
+    ctx.arc(240, 160, 20, 0, Math.PI * 2, false);
+    ctx.fillStyle = 'green';
+    ctx.fill();
+    ctx.strokeStype = "rgba(0, 0, 255, 0.5)"; // setting for stroke
+    ctx.stroke(); // drawing stroke
+    ctx.closePath();
   </script>
 </body>
 </html>
