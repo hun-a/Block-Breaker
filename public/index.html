@@ -47,6 +47,9 @@
     // for score
     var score = 0;
 
+    // for lives
+    var lives = 3;
+
     document.addEventListener('keydown', function(e) {
       if (e.keyCode === 39) {
         rightPressed = true;
@@ -69,6 +72,12 @@
         paddleX = relativeX - paddleWidth / 2;
       }
     }, false);
+
+    function drawLives() {
+      ctx.font = '16px arial';
+      ctx.fillStyle = '#0095DD';
+      ctx.fillText('Lives: ' + lives, canvas.width - 65, 20); // fillText(text, x, y);
+    }
 
     function drawScore() {
       ctx.font = '16px arial';
@@ -135,6 +144,7 @@
       drawBall();
       drawPaddle();
       drawScore();
+      drawLives();
       collisionDetection();
 
       if (x + dx > canvas.width - ballRadius || x + dx < ballRadius) {
@@ -146,8 +156,18 @@
         if (x > paddleX && x < paddleX + paddleWidth) {
           dy = -dy;
         } else {
-          alert('Game Over!');
-          document.location.reload();
+          lives--;
+          if (!lives) {
+            alert('Game Over!');
+            document.location.reload();
+          } else {
+            x = canvas.width / 2;
+            y = canvas.height - 30;
+            dx = 2;
+            dy = -2;
+            paddleX = (canvas.width - paddleWidth) / 2;
+          }
+
         }
       }
 
