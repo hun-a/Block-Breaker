@@ -63,6 +63,13 @@
       }
     }, false);
 
+    document.addEventListener('mousemove', function(e) {
+      var relativeX = e.clientX - canvas.offsetLeft;
+      if (relativeX > 0 && relativeX < canvas.width) {
+        paddleX = relativeX - paddleWidth / 2;
+      }
+    }, false);
+
     function drawScore() {
       ctx.font = '16px arial';
       ctx.fillStyle = '#0095DD';
